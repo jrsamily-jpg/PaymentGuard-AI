@@ -13,7 +13,7 @@ python -m streamlit run app/dashboard/main.py
 python -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open http://127.0.0.1:8501, choose **Create account** on the welcome screen. No shared credentials or role selector are supplied. The operational database initializes its schema automatically; it does not generate payments. Local records persist in `data/workspaces/workspaces.db`. API documentation is available at http://127.0.0.1:8000/docs.
+Open choose **Create account** on the welcome screen. No shared credentials or role selector are supplied. The operational database initializes its schema automatically; it does not generate payments. Local records persist in `data/workspaces/workspaces.db`.
 
 ## Working features
 
@@ -35,7 +35,7 @@ Payment volume means the sum of submitted event amounts. Blocked fraud is source
 
 ## Deployment status
 
-This is a working local application, not a certified or security-reviewed financial production deployment. No exchange, bank, or payment processor is connected. No affiliation with or endorsement by Coinbase is claimed. No machine-learning model has been evaluated on an operational user's data.
+This is a working local application, not a certified or security-reviewed financial production deployment. No exchange, bank, or payment processor is connected. No machine-learning model has been evaluated on an operational user's data.
 
 Before internet-facing deployment, implement managed identity/SSO and MFA, recovery, perimeter rate limiting, TLS, production secrets, database least privilege, schema migrations, encrypted backups, restore exercises, monitoring, and independent security review. Workspaces currently belong to individual accounts; there is no organization/team permission model. SQLite is intended for local use. Dashboard analytics currently load the owner's event history in memory; large-volume operations require incremental aggregation and paging throughout.
 
@@ -51,10 +51,8 @@ Operational tests use isolated temporary databases, including two-user access ch
 
 ## Research archive
 
-The former synthetic benchmark remains available explicitly as `app/dashboard/research.py` and `app/api/research.py`, with separate research storage and generation scripts. It is not used by the default dashboard, API, or Docker startup. See [historical research documentation](docs/research_reference.md). Do not treat those benchmark results as customer activity or operational model performance.
+The former synthetic benchmark remains available explicitly as `app/dashboard/research.py` and `app/api/research.py`, with separate research storage and generation scripts. It is not used by the default dashboard, API, or Docker startup.
 
 ## Repository
-
-Source: https://github.com/jrsamily-jpg/PaymentGuard-AI
 
 The intro and workspace use separate full-screen artwork, dark reading surfaces, and accessible button feedback. Local accounts, session tokens, operational payments, and environment credentials are excluded from version control. GitHub hosts the source code; this does not publish a running payment service.
