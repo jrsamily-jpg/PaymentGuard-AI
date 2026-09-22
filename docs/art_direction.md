@@ -1,0 +1,22 @@
+# Original background artwork
+
+Generated with the built-in image generation tool and copied into the repository at `app/dashboard/assets/network-art.png`. This is a background asset, not a dashboard screenshot. It is embedded locally in the hero and works without an image-hosting service.
+
+## Final prompt
+Use case: stylized-concept. Asset type: wide background artwork for PaymentGuard AI, a premium dark fintech fraud operations dashboard. Create beautiful cinematic abstract 3D art: a flowing sculptural network of delicate luminous mint and teal fiber-optic filaments sweeping through a midnight navy landscape, a few warm amber signal nodes, translucent glass arcs and subtle atmospheric depth. Sophisticated editorial technology art, finely detailed, expensive, calm and precise. Wide 3:1 composition, right-hand focal sculpture, left half almost black with very subtle filaments to allow white headline text. No text, no letters, no logos, no UI, no watermark. Deep navy black #080e19, desaturated teal and emerald light, tiny amber accents. Avoid generic purple gradients, overly bright glow, clutter.
+
+## Applied design system
+Midnight navy backdrop, sea-glass highlights, amber signals, coral risk indicators, translucent bordered cards, restrained chart grids and large numeric hierarchy. The artwork occupies the hero while data panels retain dark contrast. Small-screen CSS adjusts headline size and padding; Streamlit columns stack responsively. Fonts use DM Sans/Manrope when available and system sans-serif otherwise. External font availability is optional. Visual browser QA remains unverified because the browser policy check was unavailable.
+
+## September 22 refinement
+
+The active artwork is now `app/dashboard/assets/orbital-art-v2.png`, generated with the built-in image generation tool. The original asset is preserved.
+
+Final prompt: Use case: stylized-concept. Create original premium enterprise fintech dashboard hero artwork, panoramic 3:1. A beautifully crafted abstract protective orbital sculpture on the right third: three intersecting elliptical bands of brushed platinum and thick smoked emerald optical glass encircle a small luminous pearl core, hovering above a dark architectural plinth with delicate concentric etched lines. Fine emerald caustics, tiny restrained champagne-gold highlights, physically convincing materials, sophisticated museum product photography, extremely polished 3D render. Deep graphite blue background #0b121a, atmospheric soft light. Left 55 percent mostly quiet dark negative space for white interface heading; sculpture fully visible on right with breathing space. Tasteful, precise, serene, luxurious. No tangled wires, no cyberpunk, no busy particles, no purple, no text, no logos, no letters, no UI, no watermark. Wide banner image.
+
+The refinement uses local system fonts, graphite panels, shorter navigation labels, compact work-page headers, formatted evidence tables, exact transaction amounts and one-decimal risk scores. The overview adds review-queue navigation, a policy-simulation shortcut and an HTML report download. Transaction exports are scoped to current filters and capped at 10,000 rows.
+
+
+## Operational workspace artwork — September 22, 2026
+
+`app/dashboard/assets/shield-art-v3.png` is the current header artwork, generated with built-in image generation. Original design; no Coinbase branding or third-party marks. Prompt: "Create an original premium institutional fintech product background, panoramic 3:1 format. Deep midnight graphite architectural space, on the right third a precise sculptural protective shield formed by two thick smoked emerald optical-glass slabs with finely machined platinum edges, hovering over a black monolithic base. One hairline emerald light follows the glass bevel, discreet champagne reflection, exquisitely restrained materials, luxurious professional industrial product photography, physically plausible glass refractions and studio lighting. A subtle grid etched in the floor represents order and intelligence. Left 65% calm near-black negative space, dark slate #0d151d, designed to support readable white text. Sophisticated and cool rather than fantasy, dramatic but very understated. No text, no logos, no UI, no letters, no network spaghetti, no particles, no cartoon, no cryptocurrency coins. Asset will be a low-height banner in a serious payment-risk operations product."

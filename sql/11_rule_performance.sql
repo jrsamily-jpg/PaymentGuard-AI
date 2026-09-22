@@ -1,0 +1,2 @@
+-- Rule Performance. Synthetic USD cohort; SQLite and PostgreSQL compatible.
+SELECT h.rule_id,COUNT(*) AS triggered,SUM(CASE WHEN t.is_fraud THEN 1 ELSE 0 END) AS true_positives,SUM(CASE WHEN NOT t.is_fraud THEN 1 ELSE 0 END) AS false_positives,AVG(CASE WHEN t.is_fraud THEN 1.0 ELSE 0.0 END) AS precision,SUM(CASE WHEN t.is_fraud THEN t.amount ELSE 0 END) AS fraud_usd FROM rule_hits h JOIN transactions t ON h.transaction_id=t.transaction_id GROUP BY h.rule_id ORDER BY precision;

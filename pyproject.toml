@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "paymentguard-ai"
+version = "2.0.0"
+description = "Private payment-risk workspaces and analyst operations"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+[tool.setuptools.packages.find]
+include = ["app*"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+[tool.coverage.run]
+source = ["app/risk_engine"]
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

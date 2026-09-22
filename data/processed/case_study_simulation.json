@@ -1,0 +1,57 @@
+{
+  "current": {
+    "transactions": 100000,
+    "tp": 1354,
+    "fp": 2415,
+    "tn": 94943,
+    "fn": 1288,
+    "precision": 0.35924648447864155,
+    "recall": 0.5124905374716124,
+    "f1": 0.42239900171580097,
+    "roc_auc": 0.9659840678072743,
+    "false_positive_rate": 0.024805357546375233,
+    "false_negative_rate": 0.48750946252838756,
+    "fraud_dollars_detected": 3397114.69,
+    "fraud_dollars_missed": 811907.94,
+    "legitimate_dollars_blocked": 18815482.27,
+    "friction_cost": 19320.0
+  },
+  "proposed": {
+    "transactions": 100000,
+    "tp": 1361,
+    "fp": 2414,
+    "tn": 94944,
+    "fn": 1281,
+    "precision": 0.3605298013245033,
+    "recall": 0.5151400454201362,
+    "f1": 0.42418575658407354,
+    "roc_auc": 0.9657664290712011,
+    "false_positive_rate": 0.024795086176790812,
+    "false_negative_rate": 0.48485995457986375,
+    "fraud_dollars_detected": 3441519.73,
+    "fraud_dollars_missed": 767502.9,
+    "legitimate_dollars_blocked": 18862445.35,
+    "friction_cost": 19312.0
+  },
+  "delta": {
+    "tp": 7,
+    "fp": -1,
+    "precision": 0.0012833168458617483,
+    "recall": 0.0026495079485238104,
+    "fraud_dollars_detected": 44405.04000000004,
+    "legitimate_dollars_blocked": 46963.08000000194,
+    "friction_cost": -8.0,
+    "net_financial_impact": 44413.04000000004
+  },
+  "settings": {
+    "thresholds": {
+      "R12": 10.0,
+      "R11": 5.0,
+      "R01": 2500.0
+    },
+    "decision_threshold": 55,
+    "friction_cost": 8,
+    "confirmed": true
+  },
+  "scope": "Synthetic full-cohort counterfactual; not a causal or production estimate"
+}

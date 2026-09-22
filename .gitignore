@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.db
+*.db-*
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.json
+!data/processed/results.json
+.ruff_cache/
+data/processed/*.log
+!data/processed/case_study_simulation.json
+# Private operational storage and local credentials
+/data/workspaces/
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store

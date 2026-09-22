@@ -1,0 +1,2 @@
+-- Emerging Patterns. Synthetic USD cohort; SQLite and PostgreSQL compatible.
+WITH daily AS (SELECT SUBSTR(timestamp,1,10) AS day,fraud_category,COUNT(*) AS events FROM transactions WHERE is_fraud GROUP BY SUBSTR(timestamp,1,10),fraud_category) SELECT *,LAG(events) OVER (PARTITION BY fraud_category ORDER BY day) AS prior_observed_day_events,events-LAG(events) OVER (PARTITION BY fraud_category ORDER BY day) AS change FROM daily ORDER BY day DESC,change DESC LIMIT 100;

@@ -1,0 +1,39 @@
+name: PaymentGuard verification
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m pytest --cov=app/risk_engine --cov-report=term-missing
+  postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: paymentguard
+          POSTGRES_PASSWORD: ${{ github.run_id }}-${{ github.run_attempt }}-ci-only
+          POSTGRES_DB: paymentguard
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U paymentguard"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      DATABASE_URL: postgresql+psycopg://paymentguard:${{ github.run_id }}-${{ github.run_attempt }}-ci-only@localhost:5432/paymentguard
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: python -m scripts.bootstrap --rows 1000
+      - run: python -m scripts.verify_sql

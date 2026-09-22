@@ -1,0 +1,7 @@
+# Emerald Flow artwork
+
+Generated with built-in image generation for the operational dashboard. Saved asset: `app/dashboard/assets/emerald-flow-v4.png`. Previous artwork is preserved. Integrated into the hero and page background; dark gradients and opaque metric surfaces protect text contrast. Visually checked in the local browser.
+
+## Generation prompt
+
+Use case: stylized-concept. Asset type: premium fintech dashboard panoramic background artwork, 3:1. Create spectacular original cinematic 3D abstract art: a monumental flowing sculpture of thick emerald optical glass and liquid titanium ribbons twisting in a sweeping vortex, luminous jade edges, sharply cut crystal facets, delicate gold caustics reflecting on black polished stone. The sculpture occupies the right half, curves extend toward upper left and lower edges; left 45% is quiet deep midnight teal negative space for white headline text. Sense of precision, powerful movement frozen in time, architectural scale, extraordinary physically rendered material detail. Dramatic emerald and cyan studio lighting, tasteful silver highlights, deep charcoal backdrop. Make the artwork bold and clearly visible, not a faint texture, not a tiny object on an empty canvas. Luxury technology campaign quality, sophisticated rather than gaming. No text, logos, coins, UI, charts, watermarks, shields or padlocks. This is original decorative artwork, not a screenshot.
