@@ -1,5 +1,7 @@
 # PaymentGuard
 
+[Visit the PaymentGuard welcome page](https://jrsamily-jpg.github.io/PaymentGuard-AI/). The interactive workspace runs locally; GitHub Pages hosts the public introduction.
+
 Payment-risk operations with individual accounts, private workspaces, and no preloaded activity. A new account starts with **$0 payment volume, zero payments, zero cases, and no model-performance claims**. Returning users retain only their own records.
 
 ## Run locally
@@ -13,7 +15,7 @@ python -m streamlit run app/dashboard/main.py
 python -m uvicorn app.api.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open choose **Create account** on the welcome screen. No shared credentials or role selector are supplied. The operational database initializes its schema automatically; it does not generate payments. Local records persist in `data/workspaces/workspaces.db`.
+Open http://127.0.0.1:8501/ and choose **Create account** on the welcome screen. No shared credentials or role selector are supplied. The operational database initializes its schema automatically; it does not generate payments. Local records persist in `data/workspaces/workspaces.db`.
 
 ## Working features
 
