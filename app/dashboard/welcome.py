@@ -1,16 +1,6 @@
 """First-visit welcome screen; artwork is decorative, never account activity."""
 
-import base64
-from pathlib import Path
-
 import streamlit as st
-
-
-@st.cache_data
-def welcome_art():
-    return base64.b64encode(
-        (Path(__file__).parent / "assets" / "welcome-security-v1.png").read_bytes()
-    ).decode()
 
 
 def enter_workspace(page="Overview", action=None):
@@ -30,7 +20,7 @@ def welcome():
         unsafe_allow_html=True,
     )
     st.markdown(
-        f"""<section class="welcome-hero" style="background-image:url(data:image/png;base64,{welcome_art()})">
+        """<section class="welcome-hero">
 <div class="welcome-copy"><div class="welcome-eyebrow">CLARITY. CONTROL. CONFIDENCE.</div><h1>A clearer view.<br>A smarter next move.</h1><p>Bring your payment activity into focus. Understand risk signals and investigate with the evidence in front of you.</p><div class="welcome-pill">YOUR DATA. YOUR WORKSPACE.</div></div></section>""",
         unsafe_allow_html=True,
     )

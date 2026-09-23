@@ -309,3 +309,14 @@ def test_each_operational_control_uses_supplied_evidence(rule_id, evidence):
     assert rule_id in {item["rule_id"] for item in result["signals"]}
     assert result["score"] > 0
     assert len(result["missing_rules"]) + result["evaluated_rules"] == 12
+
+
+def test_validation_never_echoes_password(workspace):
+    client, _ = workspace
+    for path in ["/auth/register", "/auth/login"]:
+        response = client.post(
+            path, json={"username": "operator", "password": "tiny-pass"}
+        )
+        assert response.status_code == 422
+        assert "tiny-pass" not in response.text
+        assert "input" not in response.json()["detail"][0]

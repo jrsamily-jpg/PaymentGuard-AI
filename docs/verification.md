@@ -20,3 +20,9 @@ Core research risk-engine statement coverage remains 100% (119 statements). That
 Limits: container startup and live PostgreSQL were not exercised locally; the GitHub Python-version matrix has not been run here. Two TestClient dependency deprecation warnings occurred without failures. No payment processor is connected, no operational machine-learning model is evaluated, and no public production deployment or independent security certification is claimed. Deployment requirements are documented in README and the threat model.
 
 Prior synthetic-only verification is retained in [the research archive](research_verification.md).
+
+## September 23 finishing pass
+
+74 local tests passed after the latest changes. Added regression checks for password redaction in API and dashboard validation, preserving invalid form entries, correcting them successfully, and clearing a successfully saved payment form. Dashboard artwork now uses cacheable local static URLs instead of embedding megabytes of image bytes in each render. Targeted Ruff checks and whitespace validation passed.
+
+The existing GitHub workflow run 35884541363 for commit 936855d completed successfully before this finishing pass (Python matrix and research PostgreSQL job). This is evidence for that published revision, not a claim that the current local changes have run on GitHub. Public deployment, production identity/recovery, operational PostgreSQL migration/backup procedures and provider integration remain unfinished.

@@ -24,6 +24,11 @@ for page in ['Payments','Investigations','Trends','Controls','Policy simulator',
     assert not at.exception, (page, [e.message for e in at.exception])
 next(x for x in at.radio if x.label=='Account action').set_value('Create account').run()
 next(x for x in at.text_input if x.label=='Username').set_value('test-alice')
+next(x for x in at.text_input if x.label=='Password').set_value('tiny-pass')
+next(x for x in at.text_input if x.label=='Confirm password').set_value('tiny-pass')
+next(x for x in at.button if x.label=='Create account').click().run()
+assert at.error and 'tiny-pass' not in at.error[0].value
+assert next(x for x in at.text_input if x.label=='Username').value=='test-alice'
 next(x for x in at.text_input if x.label=='Password').set_value('test-password-not-real-42')
 next(x for x in at.text_input if x.label=='Confirm password').set_value('test-password-not-real-42')
 next(x for x in at.button if x.label=='Create account').click().run()
@@ -36,6 +41,11 @@ next(x for x in at.text_input if x.label=='Payment reference').set_value('TEST-O
 next(x for x in at.text_input if x.label=='Customer reference').set_value('TEST-CUSTOMER')
 next(x for x in at.text_input if x.label=='Amount · USD').set_value('25.50')
 next(x for x in at.text_input if x.label=='Occurred at · ISO 8601').set_value('2026-01-01T00:00:00+00:00')
+next(x for x in at.text_input if x.label=='Amount · USD').set_value('not-an-amount')
+next(x for x in at.button if x.label=='Record payment').click().run()
+assert at.error and 'Enter an amount' in at.error[0].value
+assert next(x for x in at.text_input if x.label=='Payment reference').value=='TEST-ONLY'
+next(x for x in at.text_input if x.label=='Amount · USD').set_value('25.50')
 next(x for x in at.button if x.label=='Record payment').click().run()
 assert not at.exception, [e.message for e in at.exception]
 at.sidebar.radio[0].set_value('Overview').run()

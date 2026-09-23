@@ -2,12 +2,13 @@
 
 import json
 from datetime import UTC, datetime
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from html import escape
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from pydantic import ValidationError
 
 from app.dashboard.theme import COLORS, chart, hero, section, theme
 from app.dashboard.welcome import return_to_welcome, welcome
@@ -66,6 +67,29 @@ def signout() -> None:
     st.session_state["workspace_page"] = "Overview"
 
 
+def form_error(error: Exception) -> str:
+    """Readable validation without echoing submitted values, including passwords."""
+    if isinstance(error, ValidationError):
+        labels = {
+            "external_id": "Payment reference",
+            "customer_ref": "Customer reference",
+            "occurred_at": "Payment time",
+        }
+        return "Please check: " + "; ".join(
+            f"{labels.get(str(item['loc'][-1]), str(item['loc'][-1]).replace('_', ' ').capitalize())}: {item['msg']}"
+            for item in error.errors(
+                include_input=False, include_context=False, include_url=False
+            )[:4]
+        )
+    if isinstance(error, InvalidOperation):
+        return "Enter an amount in USD, such as 25.50."
+    if isinstance(error, json.JSONDecodeError):
+        return (
+            "Risk context must be a valid JSON object. Leave it blank if unavailable."
+        )
+    return str(error)
+
+
 def account_forms() -> None:
     st.subheader("Your account, your data")
     st.caption(
@@ -77,7 +101,7 @@ def account_forms() -> None:
         horizontal=True,
         key="workspace_auth_mode",
     )
-    with st.form("workspace_auth", clear_on_submit=True):
+    with st.form("workspace_auth", clear_on_submit=False):
         username = st.text_input(
             "Username",
             max_chars=64,
@@ -111,7 +135,7 @@ def account_forms() -> None:
             st.session_state["workspace_page"] = "Overview"
             st.rerun()
         except ValueError as error:
-            st.error(str(error))
+            st.error(form_error(error))
 
 
 def overview(rows, case_rows, owner):
@@ -406,7 +430,7 @@ def investigations_page(case_rows, rows, owner):
             st.session_state.pop("workspace_case_snapshot", None)
             st.rerun()
         except ValueError as error:
-            st.error(str(error))
+            st.error(form_error(error))
     st.caption(
         "Investigation decisions are recorded here; they do not approve, decline, or transfer funds at a payment provider."
     )
@@ -515,7 +539,7 @@ def simulator_page(rows):
             )
             st.session_state["workspace_simulation_result"] = result
         except ValueError as error:
-            st.error(str(error))
+            st.error(form_error(error))
     result = st.session_state.get("workspace_simulation_result")
     if result:
         st.dataframe(
@@ -627,9 +651,12 @@ def data_page(owner):
                         f"Imported {len(batch):,} payments. Open Overview to see your activity."
                     )
             except ValueError as error:
-                st.error(str(error))
+                st.error(form_error(error))
     with manual_tab:
-        with st.form("manual_payment", clear_on_submit=True):
+        with st.form(
+            f"manual_payment_{st.session_state.get('payment_form_revision', 0)}",
+            clear_on_submit=False,
+        ):
             a, b = st.columns(2)
             external = a.text_input("Payment reference", max_chars=80)
             customer = b.text_input("Customer reference", max_chars=80)
@@ -676,11 +703,15 @@ def data_page(owner):
                 with Session() as session:
                     service.ingest(session, owner["id"], [payment])
                 st.session_state.pop("workspace_simulation_result", None)
-                st.success(
-                    "Payment recorded. Open Overview to see your updated totals."
+                st.session_state["payment_form_revision"] = (
+                    st.session_state.get("payment_form_revision", 0) + 1
                 )
+                st.session_state["workspace_notice"] = (
+                    "Payment recorded. Your workspace totals are up to date."
+                )
+                st.rerun()
             except (ValueError, ArithmeticError) as error:
-                st.error(str(error))
+                st.error(form_error(error))
     with access_tab:
         section("Account scope", owner["username"])
         st.write(
@@ -773,6 +804,8 @@ def render():
         "Reports": lambda: reports_page(rows, case_rows),
         "Data & access": lambda: data_page(owner),
     }
+    if message := st.session_state.pop("workspace_notice", None):
+        st.success(message)
     actions[page]()
     st.divider()
     st.caption(
