@@ -373,3 +373,14 @@ button:focus-visible,input:focus-visible {outline-color:#8ab5ff!important;}
  .welcome-hero {min-height:330px;}
  .welcome-brand {padding:12px;}
 }
+
+/* Picture logo cropped from the original sapphire security artwork. */
+.picture-logo {
+ display:inline-block;flex:none;width:44px;height:44px;border-radius:12px;
+ background-color:#06142c;
+ background-image:url('/app/static/welcome-security-v1.png');
+ background-size:auto 125%;background-position:82% 47%;background-repeat:no-repeat;
+ border:1px solid #8cb8ff80;box-shadow:0 0 18px #367bff38,inset 0 1px 0 #d1e5ff25;
+ vertical-align:middle;
+}
+.welcome-brand .picture-logo {width:50px;height:50px;border-radius:14px;}

@@ -26,7 +26,7 @@ def return_to_welcome():
 
 def welcome():
     st.markdown(
-        '<div class="welcome-shell"><div class="welcome-brand"><span class="welcome-mark">◈</span> PaymentGuard <span class="welcome-tag">PAYMENT RISK INTELLIGENCE</span></div></div>',
+        '<div class="welcome-shell"><div class="welcome-brand"><span class="picture-logo" role="img" aria-label="PaymentGuard blue glass lock"></span> PaymentGuard <span class="welcome-tag">PAYMENT RISK INTELLIGENCE</span></div></div>',
         unsafe_allow_html=True,
     )
     st.markdown(

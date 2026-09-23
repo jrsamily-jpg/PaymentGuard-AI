@@ -701,7 +701,7 @@ def data_page(owner):
 def render():
     st.set_page_config(
         page_title="PaymentGuard · Payment Risk Operations",
-        page_icon="◈",
+        page_icon="🔒",
         layout="wide",
         initial_sidebar_state="auto",
     )
@@ -732,7 +732,7 @@ def render():
         if not owner:
             st.button("Back to welcome", on_click=return_to_welcome)
         st.markdown(
-            '<div class="brand"><span class="brandmark">◈</span><span>PaymentGuard</span></div><div class="eyebrow">PAYMENT RISK OPERATIONS</div>',
+            '<div class="brand"><span class="picture-logo" role="img" aria-label="PaymentGuard blue glass lock"></span><span>PaymentGuard</span></div><div class="eyebrow">PAYMENT RISK OPERATIONS</div>',
             unsafe_allow_html=True,
         )
         st.divider()
