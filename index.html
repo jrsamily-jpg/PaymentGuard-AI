@@ -16,21 +16,14 @@
 <div class="eyebrow">CLARITY. CONTROL. CONFIDENCE.</div>
 <h1>A clearer view.<br><span>A smarter next move.</span></h1>
 <p class="intro">Bring your payment activity into focus. Understand risk signals and investigate with the evidence in front of you.</p>
-<div class="actions"><button class="button primary" id="open-app">Open workspace</button><a class="button" href="https://github.com/jrsamily-jpg/PaymentGuard-AI#run-locally">Get started</a></div>
-<p class="note">The workspace currently runs on your computer. This public page introduces PaymentGuard; online sign-in is not available yet.</p>
+<div class="actions"><a class="button primary" href="workspace.html">Open workspace</a><a class="button" href="workspace.html">Get started</a></div>
+<p class="note">Runs right here in your browser. No installation or sign-in. Your records stay in this browser, with no cloud sync.</p>
 <section class="features" aria-label="Inside PaymentGuard">
 <article class="card"><span class="index">01 / YOUR ACTIVITY</span><h2>Start with your own data.</h2><p>A fresh workspace starts at zero. Import payment records or add them individually to build your view.</p></article>
 <article class="card"><span class="index">02 / RISK CLARITY</span><h2>Understand every signal.</h2><p>Explainable rules highlight the evidence available, helping you understand what needs a closer look.</p></article>
-<article class="card"><span class="index">03 / INVESTIGATIONS</span><h2>Keep decisions in context.</h2><p>Review cases, capture notes, and follow decision history in your individual account workspace.</p></article>
+<article class="card"><span class="index">03 / INVESTIGATIONS</span><h2>Keep decisions in context.</h2><p>Review cases, capture notes, and follow decision history in your browser workspace.</p></article>
 </section>
 </main>
 <footer><span>PAYMENTGUARD · PAYMENT RISK INTELLIGENCE</span><span>Payment-event analysis. No bank, exchange, or payment processor connected.</span></footer>
-<dialog id="workspace-dialog" aria-labelledby="dialog-title"><button class="close" aria-label="Close">×</button><h2 id="dialog-title">Open your workspace</h2><p>If PaymentGuard is already running on this computer, open the local app below. Your accounts and records stay in that installation.</p><p>Using a different device? Follow the setup guide to install PaymentGuard. A hosted workspace is not available yet.</p><div class="actions"><a class="button primary" href="http://127.0.0.1:8501/" target="_blank" rel="noopener">Open local app ↗</a><a class="button" href="https://github.com/jrsamily-jpg/PaymentGuard-AI#run-locally">Setup guide</a></div></dialog>
-<script>
-const dialog=document.querySelector('#workspace-dialog');
-document.querySelector('#open-app').addEventListener('click',()=>dialog.showModal());
-dialog.querySelector('.close').addEventListener('click',()=>dialog.close());
-dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
-</script>
 </body>
 </html>

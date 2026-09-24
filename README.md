@@ -1,8 +1,10 @@
 # PaymentGuard
 
-[Visit the PaymentGuard welcome page](https://jrsamily-jpg.github.io/PaymentGuard-AI/). The interactive workspace runs locally; GitHub Pages hosts the public introduction.
+[Visit the PaymentGuard welcome page](https://jrsamily-jpg.github.io/PaymentGuard-AI/). [Open the browser workspace](https://jrsamily-jpg.github.io/PaymentGuard-AI/workspace.html). It runs entirely on GitHub Pages with browser-local storage, CSV import, evidence-only risk checks, investigations, charts, and exports. No installation is required. Browser workspaces have no authentication or cross-device sync; anyone using the same browser profile can access them. Download backups before clearing browser data. The Python application described below is a separate edition with individual accounts.
 
-Payment-risk operations with individual accounts, private workspaces, and no preloaded activity. A new account starts with **$0 payment volume, zero payments, zero cases, and no model-performance claims**. Returning users retain only their own records.
+The Python edition provides payment-risk operations with individual accounts, private workspaces, and no preloaded activity. A new account starts with **$0 payment volume, zero payments, zero cases, and no model-performance claims**. Returning users retain only their own records.
+
+See [browser workspace details](docs/browser-workspace.md) for storage limits, privacy, and backups.
 
 ## Run locally
 
